@@ -1,6 +1,15 @@
 var gulp = require('gulp');
 var sass = require('gulp-sass');
-var browserSync = require('browser-sync').create();
+var browserSync = require('browser-sync').create();var deploy      = require('gulp-gh-pages');
+
+/**
+ * Push build to gh-pages
+ */
+gulp.task('deploy', function () {
+  return gulp.src("./dist/**/*")
+    .pipe(deploy())
+});
+
 
 gulp.task('serve', function() {
 	browserSync.init({
